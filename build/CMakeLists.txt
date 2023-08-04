@@ -42,26 +42,26 @@ set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
 # # 3rd beging ##################################
 
-# #begin lua-rapidjson
-# set(RAPIDJSON_SRC
-#     src/Document.cpp
-#     src/Schema.cpp
-#     src/Userdata.hpp
-#     src/file.hpp
-#     src/luax.hpp
-#     src/rapidjson.cpp
-#     src/values.cpp
-#     src/values.hpp
-# )
-# set_property(
-# 	SOURCE ${RAPIDJSON_SRC}
-# 	APPEND
-# 	PROPERTY COMPILE_DEFINITIONS
-# 	LUA_LIB
-# )
-# list(APPEND THIRDPART_INC  lua-rapidjson/rapidjson/include)
-# set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
-# #end lua-rapidjson
+#begin lua-rapidjson
+set(RAPIDJSON_SRC
+    lua-rapidjson/src/Document.cpp
+    lua-rapidjson/src/Schema.cpp
+    lua-rapidjson/src/Userdata.hpp
+    lua-rapidjson/src/file.hpp
+    lua-rapidjson/src/luax.hpp
+    lua-rapidjson/src/rapidjson.cpp
+    lua-rapidjson/src/values.cpp
+    lua-rapidjson/src/values.hpp
+)
+set_property(
+	SOURCE ${RAPIDJSON_SRC}
+	APPEND
+	PROPERTY COMPILE_DEFINITIONS
+	LUA_LIB
+)
+list(APPEND THIRDPART_INC  lua-rapidjson/rapidjson/include)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
+#end lua-rapidjson
 
 # #begin lua-zset
 # set ( LUAZSET_SRC
