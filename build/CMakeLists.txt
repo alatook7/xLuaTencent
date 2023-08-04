@@ -57,18 +57,18 @@ set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
 #end lua-rapidjson
 
 #begin lua-zset
-set ( LUAZSET_SRC
-    lua-zset/skiplist.c
-    lua-zset/lua-skiplist.c
-)
-set_property(
-    SOURCE ${LUAZSET_SRC}
-    APPEND
-    PROPERTY COMPILE_DEFINITIONS
-    LUA_LIB
-)
-list(APPEND THIRDPART_INC  lua-zset)
-set (THIRDPART_SRC ${THIRDPART_SRC} ${LUAZSET_SRC})
+# set ( LUAZSET_SRC
+#     lua-zset/skiplist.c
+#     lua-zset/lua-skiplist.c
+# )
+# set_property(
+#     SOURCE ${LUAZSET_SRC}
+#     APPEND
+#     PROPERTY COMPILE_DEFINITIONS
+#     LUA_LIB
+# )
+# list(APPEND THIRDPART_INC  lua-zset)
+# set (THIRDPART_SRC ${THIRDPART_SRC} ${LUAZSET_SRC})
 #end lua-zset
 
 # begin lua-profobuf
