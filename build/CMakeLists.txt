@@ -40,6 +40,90 @@ endif()
 set(LUA_SRC_PATH lua-${LUA_VERSION}/src)
 set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
+# 3rd beging ##################################
+
+#begin lua-rapidjson
+set(RAPIDJSON_SRC
+    src/Document.cpp
+    src/Schema.cpp
+    src/Userdata.hpp
+    src/file.hpp
+    src/luax.hpp
+    src/rapidjson.cpp
+    src/values.cpp
+    src/values.hpp
+)
+set_property(
+	SOURCE ${RAPIDJSON_SRC}
+	APPEND
+	PROPERTY COMPILE_DEFINITIONS
+	LUA_LIB
+)
+list(APPEND THIRDPART_INC  lua-rapidjson/rapidjson/include)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
+#end lua-rapidjson
+
+#begin lua-zset
+set ( LUAZSET_SRC
+    lua-zset/skiplist.c
+    lua-zset/lua-skiplist.c
+)
+set_property(
+    SOURCE ${LUAZSET_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC  lua-zset)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${LUAZSET_SRC})
+#end lua-zset
+
+# begin lua-profobuf
+set (LPB_SRC 
+    lua-protobuf/pb.c
+)
+set_property(
+    SOURCE ${LPB_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC lua-protobuf)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${LPB_SRC})
+# end lua-protobuf
+
+#begin sproto
+set ( SPROTO_SRC
+    sproto/sproto.c
+    sproto/lsproto.c
+)
+set_property(
+    SOURCE ${SPROTO_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC  sproto)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${SPROTO_SRC})
+#end sproto
+
+#begin lsqlite3
+set ( LSQLITE3_SRC
+    lsqlite3/sqlite3.c
+    lsqlite3/lsqlite3.c
+)
+set_property(
+    SOURCE ${LSQLITE3_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC  lsqlite3)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${LSQLITE3_SRC})
+#end lsqlite3
+
+# 3rd end ##################################
+
 if (USING_LUAJIT)
 	
     if (APPLE AND NOT IOS AND NOT ANDROID)
